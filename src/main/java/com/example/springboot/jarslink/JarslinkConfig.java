@@ -1,16 +1,16 @@
 //package com.example.springboot.jarslink;
 //
-//import com.alipay.jarslink.api.ModuleLoader;
-//import com.alipay.jarslink.api.ModuleManager;
-//import com.alipay.jarslink.api.ModuleService;
-//import com.alipay.jarslink.api.impl.AbstractModuleRefreshScheduler;
-//import com.alipay.jarslink.api.impl.ModuleLoaderImpl;
-//import com.alipay.jarslink.api.impl.ModuleManagerImpl;
-//import com.alipay.jarslink.api.impl.ModuleServiceImpl;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.context.annotation.DependsOn;
-//import org.springframework.core.env.ConfigurableEnvironment;
+//imports com.alipay.jarslink.api.ModuleLoader;
+//imports com.alipay.jarslink.api.ModuleManager;
+//imports com.alipay.jarslink.api.ModuleService;
+//imports com.alipay.jarslink.api.impl.AbstractModuleRefreshScheduler;
+//imports com.alipay.jarslink.api.impl.ModuleLoaderImpl;
+//imports com.alipay.jarslink.api.impl.ModuleManagerImpl;
+//imports com.alipay.jarslink.api.impl.ModuleServiceImpl;
+//imports org.springframework.context.annotation.Bean;
+//imports org.springframework.context.annotation.Configuration;
+//imports org.springframework.context.annotation.DependsOn;
+//imports org.springframework.core.env.ConfigurableEnvironment;
 //
 //@Configuration
 //public class JarslinkConfig {

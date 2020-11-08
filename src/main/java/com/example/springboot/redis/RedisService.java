@@ -5,12 +5,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.TimeUnit;
 
 /**
- * @description: redis 服务类
+ * @description: sringboot中的 使用redistemplate操作redis
  * @author: Ye wubin
  * @date: 2018/10/18 21:10
  */

@@ -1,22 +1,22 @@
 //package com.example.springboot.jarslink;
 //
-//import com.alipay.jarslink.api.Module;
-//import com.alipay.jarslink.api.ModuleConfig;
-//import com.alipay.jarslink.api.ModuleLoader;
-//import com.alipay.jarslink.api.ModuleManager;
-//import com.alipay.jarslink.api.impl.AbstractModuleRefreshScheduler;
-//import com.google.common.base.Splitter;
-//import com.sun.javafx.PlatformUtil;
-//import org.apache.commons.io.FileUtils;
-//import org.slf4j.Logger;
-//import org.slf4j.LoggerFactory;
-//import org.springframework.core.env.ConfigurableEnvironment;
-//import org.springframework.stereotype.Component;
+//imports com.alipay.jarslink.api.Module;
+//imports com.alipay.jarslink.api.ModuleConfig;
+//imports com.alipay.jarslink.api.ModuleLoader;
+//imports com.alipay.jarslink.api.ModuleManager;
+//imports com.alipay.jarslink.api.impl.AbstractModuleRefreshScheduler;
+//imports com.google.common.base.Splitter;
+//imports com.sun.javafx.PlatformUtil;
+//imports org.apache.commons.io.FileUtils;
+//imports org.slf4j.Logger;
+//imports org.slf4j.LoggerFactory;
+//imports org.springframework.core.env.ConfigurableEnvironment;
+//imports org.springframework.stereotype.Component;
 //
-//import java.io.File;
-//import java.io.IOException;
-//import java.net.URL;
-//import java.util.*;
+//imports java.io.File;
+//imports java.io.IOException;
+//imports java.net.URL;
+//imports java.util.*;
 //
 ///**
 // * 加载jarslink模块

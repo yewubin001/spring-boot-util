@@ -2,10 +2,15 @@ package com.example.springboot.tools.controller;
 
 
 import com.example.springboot.tools.json.CustomVO;
+import com.example.springboot.utils.ExcelUtil;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 用户信息表(EduEdmoPmsUser)表控制层
@@ -27,5 +32,17 @@ public class EduEdmoPmsUserController {
         System.out.println(customVO);
         return customVO;
     }
+
+    /**
+     * excel导出
+     * @return
+     */
+    @GetMapping("/excel-export")
+    public ResponseEntity<FileSystemResource> exportExcel(){
+        List<ExcelDataDTO> excelData = new ArrayList<>();
+        return ExcelUtil.excelExport(excelData, ExcelDataDTO.class, "文件下载", "第一页");
+    }
+
+
 
 }

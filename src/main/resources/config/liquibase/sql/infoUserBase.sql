@@ -1,0 +1,2 @@
+INSERT INTO `info_user_base`(`cust_code`, `paper_id`, `paper_name`, `bank_card_id`, `bank_phone_no`, `validate_flag`, `register_time`,  `created_by`, `created_date`, `reset_date`, `last_modified_by`, `last_modified_date`)
+VALUES ('CUST_CSZUD2R4DkEgSYjY3pXK88', '320825197801172601', 'zhangsan', '6214830252175566', '13073473460', 1, NULL, 'anonymousUser', '2019-01-16 17:39:07', NULL, 'anonymousUser', '2019-01-16 17:39:07');

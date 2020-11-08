@@ -1,0 +1,23 @@
+
+
+/** 客户信息实体 */
+entity InfoUserBase {
+    /** 客户编号 */
+    custCode String maxlength(50)
+    /** 身份证号码 */
+    paperId String  maxlength(20)
+    /** 身份证姓名*/
+    paperName String maxlength(20)
+     /** 客户编号 */
+    bankCardId String maxlength(50)
+    /** 预留手机号 */
+    bankPhoneNo String maxlength(20)
+    /** 是否验证通过 */
+    validateFlag Integer 
+    /** 注册时间  */
+    registerTime LocalDate
+}
+
+dto * with mapstruct
+service all with serviceImpl
+skipClient *

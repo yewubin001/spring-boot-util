@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity InfoUserBase.
+    -->
+    <changeSet id="20180920074153-1" author="jhipster">
+        <createTable tableName="info_user_base" remarks="客户信息实体">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="cust_code" type="varchar(50)" remarks="客户编号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="paper_id" type="varchar(18)" remarks="身份证号码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="paper_name" type="varchar(50)" remarks="身份证姓名">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="bank_card_id" type="varchar(50)" remarks="客户编号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="bank_phone_no" type="varchar(20)" remarks="预留手机号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="validate_flag" type="integer(1)" remarks="是否验证通过">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="register_time" type="datetime" remarks="注册时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reset_date" type="timestamp">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_modified_by" type="varchar(50)"/>
+            <column name="last_modified_date" type="timestamp"/>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

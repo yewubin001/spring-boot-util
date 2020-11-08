@@ -1,0 +1,22 @@
+debug: true
+
+#web服务端口号
+server:
+  port: 8090
+  #设置上下文访问路径
+  servlet: context-path=/springboot
+#编码
+spring:
+  http:
+    encoding: charset=utf-8
+  #设置输入的日期格式
+  mvc:
+    date-format: yyyy-MM-dd
+  #设置输出的日期格式
+  jackson:
+    date-format: yyyy-MM-dd
+    #设置日期偏移值
+    time-zone: GMT+8
+
+
+#yml和properties同时存在，以properties为主

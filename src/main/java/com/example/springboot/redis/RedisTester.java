@@ -7,14 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.util.*;
 
+/**
+ *
+ * 目前主流的开源解决方案有jedis,redission,lettuce三种解决方案
+ * redission提供了额外的分布式锁功能
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = SpringbootApplication.class)
 public class RedisTester {
 
-    public static void main(String[] args) {
+    @Autowired
+    private JedisPool jedisPool;
+
+    @Test
+    public void test1() {
+        Jedis resource = jedisPool.getResource();
+        resource.set("name", "yewubin");
+
         //连接本地的 Redis 服务
         Jedis jedis = new Jedis("127.0.0.1");
         System.out.println("连接成功");

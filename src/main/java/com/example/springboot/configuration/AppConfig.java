@@ -3,6 +3,7 @@ package com.example.springboot.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * @Auther: yewub
@@ -14,16 +15,18 @@ import org.springframework.context.annotation.Configuration;
  * springboot 不用加@ComponentScan注解， SpringBoot会自动帮你把其他包都扫描了。
  */
 @Configuration
-//@ComponentScan
+@ComponentScan("com.example.springboot.configuration")
+@Import(MyImportBeanDefinitionRegistrar.class)
 public class AppConfig {
     public AppConfig() {
         System.out.println("初始化...");
     }
 
-    @Bean("book")
-    public Book getBook() {
-        Book book = new Book();
-        book.setName("C++");
-        return book;
+    @Bean("fox")
+    public Fox getFox() {
+        Fox fox = new Fox();
+        fox.setName("jack");
+        return fox;
     }
+
 }
