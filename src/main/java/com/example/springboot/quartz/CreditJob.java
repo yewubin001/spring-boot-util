@@ -17,10 +17,10 @@ public class CreditJob implements Job {
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
-        LOG.info("定时任务开始--{}", Instant.now());
+       // LOG.info("定时任务开始--{}", Instant.now());
         //todo
 
-        LOG.info("定时任务结束--{}", Instant.now());
+        //LOG.info("定时任务结束--{}", Instant.now());
     }
 
 }

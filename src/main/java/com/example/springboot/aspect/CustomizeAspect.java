@@ -1,19 +1,22 @@
 package com.example.springboot.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * @author yewub
  * @Date: 2019/5/25 12:51
  * @Description: 切面类
- *
  * @Aspect 注解是切面注解类
  * @Pointcut 切点定义
  * @Before 是方法执行前调用
@@ -22,6 +25,7 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 @Component
+@Order(0)
 public class CustomizeAspect {
 
     private final Logger log = LoggerFactory.getLogger(CustomizeAspect.class);
@@ -30,9 +34,9 @@ public class CustomizeAspect {
      * 1、com.example.springboot.controller 包下面的任意类的任意方法任意参数
      * @Pointcut("execution(com.example.springboot.controller.*.*(..))")
      *
-     * 定义切入点为 带有 UserAccess 注解的，如下
+     * 定义切入点为 带有 EnabledUserAccess 注解的，如下
      */
-    @Pointcut("@annotation(com.example.springboot.aspect.UserAccess)")
+    @Pointcut("@annotation(com.example.springboot.aspect.EnabledUserAccess)")
     public void execute() {
 
     }
@@ -44,7 +48,7 @@ public class CustomizeAspect {
      */
     @Around("execute()")
     public Object doAroundAdvice(ProceedingJoinPoint point) {
-        UserAccess userAccess = ((MethodSignature) point.getSignature()).getMethod().getAnnotation(UserAccess.class);
+        EnabledUserAccess userAccess = ((MethodSignature) point.getSignature()).getMethod().getAnnotation(EnabledUserAccess.class);
         log.info("环绕通知被执行，目标方法执行之前,value={},needLogin={}", userAccess.value(), userAccess.needLogin());
         try {
             //执行方法
@@ -56,4 +60,5 @@ public class CustomizeAspect {
         }
         return null;
     }
+
 }

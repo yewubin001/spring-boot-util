@@ -1,4 +1,4 @@
-package com.example.springboot.design.prototype;
+package com.example.springboot.design.创建型模式.prototype;
 
 import java.io.*;
 
@@ -66,7 +66,7 @@ public class Person implements Cloneable, Serializable {
         Person person = null;
         try {
             person = (Person) super.clone();
-            Computer clone = (Computer) person.getComputer().clone();
+            Computer clone = this.computer.clone();
             person.setComputer(clone);
         } catch (CloneNotSupportedException e) {
             e.printStackTrace();
@@ -81,19 +81,18 @@ public class Person implements Cloneable, Serializable {
      * @return
      */
     public Person deepClone() {
-        ByteArrayOutputStream bos;
-        ByteArrayInputStream bis;
-        ObjectOutputStream oos;
-        ObjectInputStream ois;
-        try {
-            bos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(bos);
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        try(ObjectOutputStream oos = new ObjectOutputStream(bos)){
             oos.writeObject(this);
-
-            bis = new ByteArrayInputStream(bos.toByteArray());
-            ois = new ObjectInputStream(bis);
-            return (Person) ois.readObject();
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
+        try(ObjectInputStream ois = new ObjectInputStream(bis)) {
+            return (Person)ois.readObject();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return null;
@@ -130,8 +129,8 @@ class Computer implements Cloneable, Serializable {
     }
 
     @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+    protected Computer clone() throws CloneNotSupportedException {
+        return (Computer)super.clone();
     }
 
     @Override

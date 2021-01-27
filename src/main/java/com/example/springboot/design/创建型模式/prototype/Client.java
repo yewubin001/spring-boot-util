@@ -1,4 +1,4 @@
-package com.example.springboot.design.prototype;
+package com.example.springboot.design.创建型模式.prototype;
 
 /**
  * @version : 1.0
