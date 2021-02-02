@@ -1,4 +1,4 @@
-package com.example.springboot.aspect;
+package com.example.springboot.aop;
 
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;

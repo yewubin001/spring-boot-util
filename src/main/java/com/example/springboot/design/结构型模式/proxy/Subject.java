@@ -1,4 +1,4 @@
-package com.example.springboot.design.proxy;
+package com.example.springboot.design.结构型模式.proxy;
 
 /**
  * @Auther: yewub

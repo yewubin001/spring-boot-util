@@ -1,4 +1,4 @@
-package com.example.springboot.aspect;
+package com.example.springboot.aop;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

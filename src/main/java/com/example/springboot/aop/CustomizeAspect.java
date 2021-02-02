@@ -1,7 +1,6 @@
-package com.example.springboot.aspect;
+package com.example.springboot.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -10,8 +9,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 /**
  * @author yewub
@@ -36,7 +33,7 @@ public class CustomizeAspect {
      *
      * 定义切入点为 带有 EnabledUserAccess 注解的，如下
      */
-    @Pointcut("@annotation(com.example.springboot.aspect.EnabledUserAccess)")
+    @Pointcut("@annotation(com.example.springboot.aop.EnabledUserAccess)")
     public void execute() {
 
     }
@@ -48,6 +45,7 @@ public class CustomizeAspect {
      */
     @Around("execute()")
     public Object doAroundAdvice(ProceedingJoinPoint point) {
+        log.info("获取参数：{}", point.getArgs()[0]);
         EnabledUserAccess userAccess = ((MethodSignature) point.getSignature()).getMethod().getAnnotation(EnabledUserAccess.class);
         log.info("环绕通知被执行，目标方法执行之前,value={},needLogin={}", userAccess.value(), userAccess.needLogin());
         try {

@@ -1,4 +1,4 @@
-package com.example.springboot.aspect;
+package com.example.springboot.aop;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
