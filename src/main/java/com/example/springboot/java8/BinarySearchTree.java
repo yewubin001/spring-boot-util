@@ -45,6 +45,8 @@ public class BinarySearchTree {
         }
     }
 
+
+
     public static void main(String[] args) {
         int data[] = {5,9,0,1,2,3,10,4};
         BinarySearchTree root = new BinarySearchTree(data[0]);

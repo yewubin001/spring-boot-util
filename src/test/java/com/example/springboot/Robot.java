@@ -1,48 +1,35 @@
 package com.example.springboot;
 
-import java.io.*;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Comparator;
+import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.TreeSet;
 
-/**
- * java实现爬虫
- */
 public class Robot {
     public static void main(String[] args) {
-        URL url = null;
-        URLConnection urlconn = null;
-        BufferedReader br = null;
-        PrintWriter pw = null;
-        String regex = "https://[\\w+\\.?/?]+\\.[A-Za-z]+";//url匹配规则
-        Pattern p = Pattern.compile(regex);
-        try {
-            url = new URL("https://www.rndsystems.com/cn");//爬取的网址、这里爬取的是一个生物网站
-            urlconn = url.openConnection();
-            pw = new PrintWriter(new FileWriter("C://sign/SiteURL.txt"), true);//将爬取到的链接放到D盘的SiteURL文件中
-            br = new BufferedReader(new InputStreamReader(
-                    urlconn.getInputStream()));
-            String buf = null;
-            while ((buf = br.readLine()) != null) {
-                Matcher buf_m = p.matcher(buf);
-                while (buf_m.find()) {
-                    pw.println(buf_m.group());
-                }
-            }
-            System.out.println("爬取成功^_^");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            pw.close();
-        }
+        TreeSet<String> objects = new TreeSet<>(Comparator.comparingInt(String::length));
+        objects.add("a");
+        objects.add("ab");
+        objects.add("abc");
+        objects.add("abcd");
+
+        System.out.println(objects.comparator());
+        System.out.println(objects.first());
+
+        System.out.println(objects.headSet("abc"));
+
+        Person p11= new Person("yewubin", 32, 1);
+        Person p22 = new Person("guikaili", 29, 0);
+
+        Queue queue = new PriorityQueue((o1, o2) -> {
+            Person p1 = (Person) o1;
+            Person p2 = (Person) o2;
+            return p1.getAge() - p2.getAge();
+        });
+
+        queue.add(p11);
+        queue.add(p22);
+        System.out.println(queue);
+
     }
 }

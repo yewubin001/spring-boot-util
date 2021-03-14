@@ -3,7 +3,9 @@ package com.example.springboot.java8.stream;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.sql.SQLOutput;
 import java.util.*;
+import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,6 +37,10 @@ public class StreamTest {
 
         Stream<Double> stream3 = Stream.generate(Math::random).limit(2);
         stream3.forEach(System.out::println);
+
+        Arrays.stream(new int[]{1,2,3,4}).forEach(System.out::println);
+
+        Stream.generate(Math::random).limit(2);
     }
 
     /****************************************************2. 流的中间操作******************************************************/
@@ -42,11 +48,25 @@ public class StreamTest {
 
     /**
      * filter 方法用于通过设置的条件过滤出元素。以下代码片段使用 filter 方法过滤掉空字符串
+     * 函数式接口   @FunctionalInterface
      */
     @Test
     public void filter() {
         List<String> strings = Arrays.asList("Hollis", "", "HollisChuang", "H", "hollis");
         strings.stream().filter(s -> !s.isEmpty()).forEach(System.out::println);
+//        strings.stream().filter(new Predicate<String>() {
+//            @Override
+//            public boolean test(String s) {
+//                return !s.isEmpty();
+//            }
+//        }).forEach(new Consumer<String>() {
+//            @Override
+//            public void accept(String s) {
+//                System.out.println(s);
+//            }
+//        });
+
+
     }
 
     /**
@@ -55,6 +75,7 @@ public class StreamTest {
     @Test
     public void limit() {
         List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
+        numbers.stream().skip(3).forEach(System.out::println);
         numbers.stream().limit(4).forEach(System.out::println);
     }
 
@@ -98,6 +119,7 @@ public class StreamTest {
     public void sort() {
         List<Integer> numbers = Arrays.asList(3, 2, 2, 3, 7, 3, 5);
         numbers.stream().sorted().forEach(System.out::println);
+        numbers.stream().sorted((o1, o2) -> o2-o1).forEach(System.out::println);
     }
 
 
@@ -190,6 +212,7 @@ public class StreamTest {
     @Test
     public void reduce() {
         List<BigDecimal> intList = Arrays.asList(new BigDecimal(1), new BigDecimal(2), new BigDecimal(3));
+        Optional<BigDecimal> reduceOption = intList.stream().reduce(BigDecimal::add);
         BigDecimal reduce = intList.stream().reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.println(reduce);
 

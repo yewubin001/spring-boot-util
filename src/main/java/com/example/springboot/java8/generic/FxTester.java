@@ -65,21 +65,19 @@ public class FxTester {
 
 
         ArrayList<Number> list1 = new ArrayList();
-        list1.removeIf(new Predicate<Number>() {
-            @Override
-            public boolean test(Number number) {
-                return false;
-            }
-        });
         ArrayList<Integer> list2 = new ArrayList();
         list1.add(111); // 可以添加Integer类型
         // method(list2); 报错，因为集合不可以协变，必须一一对应
         list1.addAll(list2);  // 此处使用了泛型类型
         // 以上两个是有区别的
+
+        ArrayList<String> list3 = new ArrayList<>();
+        list3.add("11");
+        list3.removeIf(o -> o.length()>3);
+        System.out.println(list3);
     }
 
     public static void method(ArrayList<Number> list){
 
     }
-
 }
