@@ -1,7 +1,5 @@
 package com.example.springboot.utils;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -11,6 +9,7 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Base64;
+import org.apache.commons.io.IOUtils;
 
 /**
  * IO/NIO
@@ -171,6 +170,8 @@ public class FileUtils {
         return result;
     }
 
+
+
     /**
      * 下载远程文件保存并读取 网络地址
      */
@@ -200,5 +201,14 @@ public class FileUtils {
             return Base64.getEncoder().encodeToString(res);
         }
 
+    }
+
+
+    public static void main(String[] args) throws IOException {
+        String s = downAndReadFile("https://img-blog.csdnimg.cn/20181125155032784.jpg");
+        System.out.println(s);
+        File file = new File("F:\\test\\aa.gif");
+        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+        bos.write(Base64.getDecoder().decode(s.getBytes()));
     }
 }
