@@ -17,6 +17,7 @@ import org.apache.commons.io.IOUtils;
  * 文件复制并返回文件字节数组
  */
 public class FileUtils {
+
     public static byte[] getContent(String filePath) throws IOException {
         long time = System.currentTimeMillis();
         File file = new File(filePath);
@@ -189,6 +190,14 @@ public class FileUtils {
 
     }
 
+    /**
+     * 下载远程文件保存并读取 网络地址
+     *
+     * @param filePath
+     * @param referer
+     * @return
+     * @throws IOException
+     */
     public static String downAndReadFileWithRefer(String filePath,String referer) throws IOException {
         URL url = new URL(filePath);
         HttpURLConnection uc = (HttpURLConnection) url.openConnection();
@@ -204,11 +213,22 @@ public class FileUtils {
     }
 
 
+    /**
+     * 下载网络文件
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         String s = downAndReadFile("https://img-blog.csdnimg.cn/20181125155032784.jpg");
         System.out.println(s);
         File file = new File("F:\\test\\aa.gif");
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-        bos.write(Base64.getDecoder().decode(s.getBytes()));
+        // 方法1
+        //BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+        //bos.write(Base64.getDecoder().decode(s));
+
+        //方法2，使用工具
+        byte[] bytes = Base64.getDecoder().decode(s);
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        org.apache.commons.io.FileUtils.copyToFile(bis, file);
     }
 }
