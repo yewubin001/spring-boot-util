@@ -8,7 +8,8 @@ import java.util.TreeMap;
 /**
  * @Auther: 59315
  * @Date: 2021/2/28 14:35
- * @Description: 1->北国风光，千里冰封，万里雪飘。
+ * @Description:
+ * 1->北国风光，千里冰封，万里雪飘。
  * 2->望长城内外，惟余莽莽；大河上下，顿失滔滔。
  * 3->山舞银蛇，原驰蜡象，欲与天公试比高。
  * 4->须晴日，看红装素裹，分外妖娆。
@@ -20,10 +21,11 @@ public class BufferedReaderTest {
 
 
     public static void main(String[] args) {
-        try (BufferedReader br = new BufferedReader(new FileReader("F:\\工作文档\\毛泽东.txt"));
-             BufferedWriter bw = new BufferedWriter(new FileWriter("F:\\工作文档\\毛泽东-copy.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("F:\\test\\毛泽东.txt"));
+             BufferedWriter bw = new BufferedWriter(new FileWriter("F:\\test\\毛泽东-copy.txt"))) {
             String line;
             // TreeMap<Integer, String> map = new TreeMap<>();
+            // 為什麼HashMap这里也是有序的，因为Integer的hash值等于本身，也是有序的。
             Map<Integer, String> map = new HashMap<>();
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
