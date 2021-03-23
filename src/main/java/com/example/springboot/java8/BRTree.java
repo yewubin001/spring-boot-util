@@ -105,14 +105,14 @@ public class BRTree<K extends Comparable<K>, V> {
     /**
      * 左旋:
      * 左旋示意图：左旋x节点
-     * P                            P
-     * |                            |
-     * x                            y
-     * /  \          ----->         /  \
-     * lx   y                       x   ry
-     * / \                    /  \
-     * ly   ry                lx   ly
-     * <p>
+     *      P                            P
+     *      |                            |
+     *      x                            y
+     *    /  \          ----->         /  \
+     *   lx   y                       x   ry
+     *       / \                    /  \
+     *     ly   ry                lx   ly
+     *
      * 1、将x的右子节点更新为y的左子节点（ly），将y的左子节点的父节点更新为x
      * 2、当x的父节点不为空时，更新y的父节点指向x的父节点，并将x的父节点 指定为 y
      * 3、将x的父节点更新为 y，将y的左子节点更新为 x
@@ -143,14 +143,14 @@ public class BRTree<K extends Comparable<K>, V> {
     /**
      * 右旋:
      * 右旋示意图：右旋y节点
-     * P                                  P
-     * |                                  |
-     * y                                  x
-     * /  \      ------->                 /  \
-     * x   ry                             lx   y
-     * /  \                                     / \
-     * lx   ly                                  ly   ry
-     * <p>
+     *       P                       P
+     *       |                       |
+     *       y                       x
+     *     /  \      ------->      /  \
+     *    x   ry                  lx   y
+     *  /  \                          / \
+     * lx   ly                       ly   ry
+     *
      * 1、将y的左子节点更新为x的右子节点，并将x的右子节点的父节点更新为 y
      * 2、当y的父节点不为空时，更新x的父节点指向y的父节点，并将y的父节点 指定为 x
      * 3、将y的父节点更新为 x，将x的右子节点更新为 y
@@ -248,6 +248,7 @@ public class BRTree<K extends Comparable<K>, V> {
      * @param node
      */
     public void insertFixup(RBNode node) {
+
 
 
 
