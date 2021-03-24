@@ -249,6 +249,43 @@ public class BRTree<K extends Comparable<K>, V> {
      */
     public void insertFixup(RBNode node) {
 
+        this.root.setColor(BLACK);
+
+        RBNode parent = node.getParent();
+        RBNode gparent = parent.getParent();
+
+        RBNode uncel = null;
+
+        if(parent == gparent.left) { // 父节点为爷爷节点的左子树
+            uncel = gparent.right;
+            if(uncel!=null && uncel.color==RED){
+                parent.setColor(BLACK);
+                uncel.setColor(BLACK);
+                gparent.setColor(RED);
+                insertFixup(gparent);
+                return;
+            }
+
+            if(uncel==null || uncel.color==BLACK){
+
+                if (parent.left == node) {
+                    setRed(gparent);
+                    setBlack(parent);
+                    rightRotate(gparent);
+                    return;
+                } else {
+                    leftRotate(parent);
+                    insertFixup(parent);
+                    return;
+                }
+
+            }
+
+
+
+        } else { // 父节点为爷爷节点的右子树
+
+        }
 
 
 
