@@ -13,7 +13,7 @@ package com.example.springboot.java8;
  * 8、修正插入导致红黑树失衡的方法定义：insertFixUp(RBNode node)
  * 9、测试红黑树的正确性
  */
-public class BRTree<K extends Comparable<K>, V> {
+public class RBTree<K extends Comparable<K>, V> {
 
     private static final boolean RED = true;
     private static final boolean BLACK = false;
@@ -223,7 +223,7 @@ public class BRTree<K extends Comparable<K>, V> {
         }
 
         // 需要调用修复红黑树平衡方法
-        // insertFixup();
+         insertFixup(node);
     }
 
 
@@ -233,13 +233,13 @@ public class BRTree<K extends Comparable<K>, V> {
      *     |---情景2：插入节点的key已经存在，不需要处理
      *     |---情景3：插入节点的父节点为黑色，黑色节点没有变化，所以红黑树依然平衡，不需要处理
      *
-     *     |---情景4：需要自己处理
+     *     |---情景4：插入节点的父节点为红色  需要自己处理
      *         |---情景4.1：叔叔节点存在，且为红色（父-叔 双红），将爸爸节点和叔叔节点染色为黑色，爷爷节点染色为红色，并且再以爷爷节点为当前节点 进行下一轮处理
-     *         |---情景4.2：叔叔节点不存在，或者为黑色，父节点为爷爷节点的左子树
+     *         |---情景4.2：叔叔节点不存在，或者为黑色，父节点为爷爷节点的左子树。
      *             |---情景4.2.1：插入节点为其父节点的左子节点（LL情况），将爸爸染色为黑色，爷爷节点染色为红色，然后以爷爷节点右旋
      *             |---情景4.2.2：插入节点为其父节点的右子节点（LR情况），
      *                           以爸爸节点进行一次左旋，得到LL双红的情景（4.2.1），然后指定爸爸节点为当前节点进行下一轮处理
-     *         |---情景4.3：叔叔节点不存在，或者为黑色，父节点为爷爷节点的右子树
+     *         |---情景4.3：叔叔节点不存在，或者为黑色，父节点为爷爷节点的右子树。
      *             |---情景4.3.1：插入节点为其父节点的右子节点（RR情况），将爸爸染色为黑色，爷爷节点染色为红色，然后以爷爷节点左旋
      *             |---情景4.3.2：插入节点为其父节点的右子节点（LR情况），
      *                           以爸爸节点进行一次右旋，得到RR双红的情景（4.3.1），然后指定爸爸节点为当前节点进行下一轮处理
@@ -251,44 +251,57 @@ public class BRTree<K extends Comparable<K>, V> {
 
         this.root.setColor(BLACK);
 
-        RBNode parent = node.getParent();
-        RBNode gparent = parent.getParent();
+        RBNode parent = parentOf(node);
+        RBNode gparent = parentOf(parent);
 
-        RBNode uncel = null;
-
-        if(parent == gparent.left) { // 父节点为爷爷节点的左子树
-            uncel = gparent.right;
-            if(uncel!=null && uncel.color==RED){
-                parent.setColor(BLACK);
-                uncel.setColor(BLACK);
-                gparent.setColor(RED);
-                insertFixup(gparent);
-                return;
-            }
-
-            if(uncel==null || uncel.color==BLACK){
-
-                if (parent.left == node) {
-                    setRed(gparent);
-                    setBlack(parent);
-                    rightRotate(gparent);
-                    return;
-                } else {
-                    leftRotate(parent);
-                    insertFixup(parent);
+        if(parent != null && isRed(parent)) {
+            RBNode uncel;
+            if(parent == gparent.left) { // 父节点为爷爷节点的左子树
+                uncel = gparent.right;
+                if(uncel!=null && isRed(uncel)){
+                    parent.setColor(BLACK);
+                    uncel.setColor(BLACK);
+                    gparent.setColor(RED);
+                    insertFixup(gparent);
                     return;
                 }
 
+                if(uncel==null || isBlack(uncel)){
+                    if (parent.left == node) {
+                        setRed(gparent);
+                        setBlack(parent);
+                        rightRotate(gparent);
+                        return;
+                    } else {
+                        leftRotate(parent);
+                        insertFixup(parent);
+                        return;
+                    }
+                }
+            } else { // 父节点为爷爷节点的右子树
+                uncel = gparent.left;
+                if(uncel!=null && uncel.color==RED){
+                    parent.setColor(BLACK);
+                    uncel.setColor(BLACK);
+                    gparent.setColor(RED);
+                    insertFixup(gparent);
+                    return;
+                }
+
+                if(uncel==null || uncel.color==BLACK) {
+                    if(parent.right == node){
+                        parent.setColor(BLACK);
+                        gparent.setColor(RED);
+                        leftRotate(gparent);
+                        return;
+                    } else {
+                        rightRotate(parent);
+                        insertFixup(parent);
+                        return;
+                    }
+                }
             }
-
-
-
-        } else { // 父节点为爷爷节点的右子树
-
         }
-
-
-
     }
 
 
