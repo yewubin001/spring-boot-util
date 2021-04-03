@@ -1,5 +1,7 @@
 package com.example.springboot.leetcode.array;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -11,6 +13,7 @@ import java.util.Set;
  * @Auther: ywb
  * @Date: 2020/9/9 11:49
  */
+
 public class SearchRepeatElement {
 
 
@@ -18,7 +21,6 @@ public class SearchRepeatElement {
         char[] array = {'d', 'a', 'b', 'c', 'c', 'b', 'b', 'c'};
         // 1
         System.out.println(firstRepeat(array));
-
         // 2
         SearchRepeatElement searchRepeatElement = new SearchRepeatElement();
         CountIndex countIndex = searchRepeatElement.firstNoRepeat(array);

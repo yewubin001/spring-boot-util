@@ -5,11 +5,12 @@ package com.example.springboot.java8;
  * @Description: 
  */
 public class OperandStack {
+
     public static int add(int a, int b){
         int c = a + b;
         return c;
     }
     public static void main(String[] args){
-        add(100, 98);
+        add(100, 100);
     }
 }

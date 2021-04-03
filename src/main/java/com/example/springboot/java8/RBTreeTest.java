@@ -1,5 +1,6 @@
 package com.example.springboot.java8;
 
+
 import java.util.Scanner;
 
 /**
@@ -8,13 +9,9 @@ import java.util.Scanner;
  * @Description:  红黑树测试类
  */
 public class RBTreeTest {
-
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
-
         RBTree<Integer, Object> rbTree = new RBTree<>();
-
         while(true) {
             System.out.println("请输入key:");
             Integer key = scanner.nextInt();
@@ -23,8 +20,5 @@ public class RBTreeTest {
             //rbTree.inOrderPrint();  中序遍历
             TreeOperation.show(rbTree.getRoot());
         }
-
-
     }
-
 }
