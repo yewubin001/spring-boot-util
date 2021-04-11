@@ -1,4 +1,4 @@
-package com.example.springboot.juc;
+package com.example.springboot.juc.cas;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
