@@ -11,9 +11,7 @@ import java.util.concurrent.atomic.AtomicStampedReference;
  * @version: v1.0
  */
 public class ABA2 {
-
     public static AtomicStampedReference<Integer> a = new AtomicStampedReference<>(new Integer("1"), 1);
-
     public static void main(String[] args) {
 
         Thread mainThread = new Thread(new Runnable() {

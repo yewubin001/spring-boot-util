@@ -8,18 +8,14 @@ import java.lang.reflect.Constructor;
  * @Description:  懒汉模式-双重锁，懒加载
  */
 public class Singleton2 {
-
     // 此变量需要用valotile修饰防止指令重排序
     private static volatile Singleton2 singleton = null;
-
     // 私有化构造方法
     private Singleton2(){
         if(singleton != null) {
             throw new RuntimeException("Can not do this");
         }
-
     }
-
     public static Singleton2 getInstance(){
         // 进入方法内，先判断实例是否为空，以确定是否需要同步代码块
         if(singleton == null) {

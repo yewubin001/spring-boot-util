@@ -1,4 +1,4 @@
-package com.example.springboot.java8;
+package com.example.springboot.java8.rbtree;
 
 
 import java.util.Scanner;

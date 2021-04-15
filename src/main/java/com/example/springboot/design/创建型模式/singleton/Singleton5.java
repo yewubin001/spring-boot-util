@@ -10,7 +10,6 @@ import java.util.concurrent.atomic.AtomicReference;
  * 缺点：如果忙等待一直执行不成功(一直在死循环中),会对CPU造成较大的执行开销
  */
 public class Singleton5 {
-
     private static AtomicReference<Singleton5> reference = new AtomicReference();
 
     private Singleton5() {
