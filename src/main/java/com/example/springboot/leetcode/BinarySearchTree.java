@@ -1,4 +1,4 @@
-package com.example.springboot.java8;
+package com.example.springboot.leetcode;
 
 /**
  * @Auther: 59315
