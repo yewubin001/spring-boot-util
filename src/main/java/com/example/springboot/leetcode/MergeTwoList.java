@@ -1,3 +1,5 @@
+package com.example.springboot.leetcode;
+
 /**
  * @description: 将两个升序链表合并为一个新的升序链表并返回。
  * 新链表是通过拼接给定的两个链表的所有节点组成的。
@@ -10,11 +12,13 @@ public class MergeTwoList {
     static class ListNode {
         int val;
         ListNode next;
+
         public ListNode(int val, ListNode next) {
             this.val = val;
             this.next = next;
         }
     }
+
     public static void main(String[] args) {
         ListNode node3 = new ListNode(4, null);
         ListNode node2 = new ListNode(2, node3);
@@ -44,7 +48,6 @@ public class MergeTwoList {
     public static ListNode mergerTwoList(ListNode list1, ListNode list2) {
         ListNode head = new ListNode(0, null);
         ListNode result = head;
-
         while (list1 != null && list2 != null) {
             if (list1.val >= list2.val) {
                 head.next = list2;
@@ -58,9 +61,11 @@ public class MergeTwoList {
         }
         if (list1 == null) {
             head.next = list2;
-        } else {
+        }
+        if (list2 == null) {
             head.next = list1;
         }
+
         return result.next;
     }
 
