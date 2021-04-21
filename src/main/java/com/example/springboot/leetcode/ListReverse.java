@@ -9,7 +9,7 @@ import java.util.List;
  */
 public class ListReverse {
 
-    static class ListNode{
+    static class ListNode {
         int value;
         ListNode next;
 
@@ -29,17 +29,23 @@ public class ListReverse {
 
 //        ListNode iterate = iterate(listNode1);
         ListNode recursion = recursion(listNode1);
+
+        while(recursion!=null){
+            System.out.print(recursion.value + "\t");
+            recursion = recursion.next;
+        }
     }
 
     /**
      * 循环
+     *
      * @param head
      * @return
      */
     public static ListNode iterate(ListNode head) {
         ListNode prev = null, next;
         ListNode curr = head;
-        while(curr != null) {
+        while (curr != null) {
             next = curr.next;
             curr.next = prev;
             prev = curr;
@@ -50,17 +56,18 @@ public class ListReverse {
 
     /**
      * 递归
+     *
      * @param head
      * @return
      */
     public static ListNode recursion(ListNode head) {
-        if(head == null || head.next == null){
+        if (head == null || head.next == null) {
             return head;
         }
-        ListNode newNode = recursion(head.next);
+        ListNode newHead = recursion(head.next);
         head.next.next = head;
         head.next = null;
-        return newNode;
+        return newHead;
     }
 
 }
