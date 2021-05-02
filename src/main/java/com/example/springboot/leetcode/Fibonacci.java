@@ -33,6 +33,7 @@ public class Fibonacci {
         System.out.println(one+two);
         fibonacci_recursion(two, one+two, ++index, num);
     }
+
     public static void fibonacci_loop(int num) {
         if (num < 1) {
             return;

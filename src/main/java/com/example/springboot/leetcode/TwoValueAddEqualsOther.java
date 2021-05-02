@@ -1,11 +1,16 @@
 package com.example.springboot.leetcode;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @version : 1.0
  * @Description: 求数组中两个数相加等于给定的值
  * @Auther: ywb
  * @Date: 2020/6/15 10:40
  */
-public class TowSum {
+public class TwoValueAddEqualsOther {
 
 
     public static void main(String[] args) {
@@ -20,6 +25,7 @@ public class TowSum {
 
     public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> map = new HashMap<>();
+
         int length = nums.length;
         for (int i = 0; i < length; i++) {
             int value = target - nums[i];
@@ -30,7 +36,7 @@ public class TowSum {
             // 将该数组的值存入 map
             map.put(nums[i], i);
         }
-        return null; 
+        return null;
     }
 
 }
