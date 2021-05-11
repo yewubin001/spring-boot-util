@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
  * <p>
  * Date 2021-05-02 21:48
  */
-public class JavaTest {
+public class ToolsTest {
 
     public static void main(String[] args) throws ParseException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         System.out.println("----如何把list集合拼接成以逗号分隔的字符串 a,b,c");
