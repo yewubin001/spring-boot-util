@@ -1,5 +1,7 @@
 package com.example.springboot.redis;
 
+import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class StockController {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private Redisson redisson;
 
     /**
      * 利用redis单线程特性
@@ -40,7 +44,7 @@ public class StockController {
     @GetMapping("/deduct-stock")
     public String deductStock() {
         //集群 分布式锁
-        String lockKey = "lockKey";
+        String lockKey = "product_101";
         String uuid = UUID.randomUUID().toString();
         try {
             // jedis.setnx(k, v)
@@ -49,6 +53,7 @@ public class StockController {
                 return "error_code";
             }
             // jedis.get(key);
+            RLock lock = redisson.getLock(lockKey);lock.lock();
             int stock = Integer.parseInt(stringRedisTemplate.opsForValue().get("stock"));
             if (stock > 0) {
                 int realStock = stock - 1;

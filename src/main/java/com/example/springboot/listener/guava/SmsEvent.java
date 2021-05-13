@@ -1,4 +1,4 @@
-package com.example.springboot.guava.eventbus;
+package com.example.springboot.listener.guava;
 
 /**
  * @Auther: yewub

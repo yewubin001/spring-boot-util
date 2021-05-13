@@ -1,18 +1,19 @@
 package com.example.springboot.controller;
 
 import com.example.springboot.configuration.ApplicationProperties;
-import com.example.springboot.guava.eventbus.NoticeSmsEvent;
+import com.example.springboot.listener.guava.SmsEvent;
 import com.example.springboot.utils.SpringContextUtil;
 import com.google.common.eventbus.AsyncEventBus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.DateFormat;
-import java.util.*;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 测试控制器
@@ -56,7 +57,7 @@ public class ExeController {
 
     @RequestMapping("/envetbus")
     public void envetBus() {
-        NoticeSmsEvent noticeSmsEvent = new NoticeSmsEvent(1L, "15221146305", "我爱你");
+        SmsEvent noticeSmsEvent = new SmsEvent(1L, "15221146305", "我爱你");
         asyncEventBus.post(noticeSmsEvent);
     }
 }

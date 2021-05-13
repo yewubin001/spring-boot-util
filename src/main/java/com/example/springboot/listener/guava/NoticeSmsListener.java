@@ -1,4 +1,4 @@
-package com.example.springboot.guava.eventbus;
+package com.example.springboot.listener.guava;
 
 import com.google.common.eventbus.AsyncEventBus;
 import com.google.common.eventbus.Subscribe;
@@ -25,14 +25,18 @@ public class NoticeSmsListener {
     public void register() {
         asyncEventBus.register(this);
     }
+
     @PreDestroy
     public void destroy() {
         asyncEventBus.unregister(this);
     }
 
     @Subscribe
-    public void sendSms(NoticeSmsEvent smsEvent) {
-        //这里写需要异步执行的逻辑
-        System.out.println("发送短信。。。"+smsEvent.getContent());
+    public void sendSms(SmsEvent smsEvent) {
+        if(smsEvent.getSmsId().equals(1L)){
+            System.out.println("发送短信。。。" + smsEvent.getContent());
+        } else if (smsEvent.getSmsId().equals(2L)){
+            System.out.println("发送邮件。。。" + smsEvent.getContent());
+        }
     }
 }
