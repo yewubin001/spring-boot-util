@@ -13,10 +13,10 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OrderStatusTest {
+public class ReaderTest {
 
     @Autowired
-    private OrderStatusService orderStatusService;
+    private ReaderService orderStatusService;
 
     @Test
     public void test() {
