@@ -57,12 +57,18 @@ public class ToolsTest {
         // Date类型转String类型
         String date = DateFormatUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss");
         System.out.println(date); // 输出 2021-05-01 01:01:01
-
         // String类型转Date类型
         Date date2 = DateUtils.parseDate("2021-05-01 01:01:01", "yyyy-MM-dd HH:mm:ss");
-
         // 计算一个小时后的日期
         Date date3 = DateUtils.addHours(new Date(), 1);
+                /**
+         * Instant 转成字符串 yyyy-MM-dd 或者yyyy-MM-dd HH:mm:ss
+         */
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.systemDefault());
+        System.out.println(dateFormat.format(Instant.now()));
+
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
+        System.out.println(localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 
 
         System.out.println("----包装临时对象");
