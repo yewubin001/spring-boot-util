@@ -1,4 +1,4 @@
-package com.example.springboot.listener.spring;
+package com.example.springboot.design.行为型模式.listener.spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;

@@ -1,4 +1,4 @@
-package com.example.springboot.spring;
+package com.example.springboot.spring.reflect;
 
 import org.junit.Test;
 
@@ -44,6 +44,7 @@ public class MyTest {
 
     /**
      * 使用自定义注解注入属性值
+     * 不需要setUserService方法
      */
     @Test
     public void test2() throws Exception {
@@ -70,3 +71,5 @@ public class MyTest {
     }
 
 }
+
+

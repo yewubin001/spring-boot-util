@@ -31,14 +31,14 @@ public class AppTest {
         // beanFactoryPostProcessor
 
         // 实现了BeanDefinitionRegistry   BeanFactory
-//        DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
+        DefaultListableBeanFactory beanFactory = context.getDefaultListableBeanFactory();
         // 注册了Cat.class 的beanDefinition
-//        RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(Cat.class);
-//        beanFactory.registerBeanDefinition("cat", rootBeanDefinition);
+        RootBeanDefinition rootBeanDefinition = new RootBeanDefinition(Cat.class);
+        beanFactory.registerBeanDefinition("cat", rootBeanDefinition);
 
         // singletonObjects 缓存单例bean   beanName ----- singletonObjects
-//        Cat cat = new Cat();
-//        beanFactory.registerSingleton("cat", cat);
+        Cat cat = new Cat();
+        beanFactory.registerSingleton("cat", cat);
 
 
         System.out.println(context.getBean("user"));

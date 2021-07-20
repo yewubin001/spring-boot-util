@@ -1,4 +1,4 @@
-package com.example.springboot.springMVC;
+package com.example.springboot.spring.springmvc;
 
 import com.example.springboot.configuration.AppConfig;
 import org.springframework.web.WebApplicationInitializer;
@@ -14,7 +14,7 @@ import javax.servlet.ServletRegistration;
  * @date: 2021/1/12 15:04
  * @version: v1.0
  */
-public class MyWebApplicationInitializer implements WebApplicationInitializer {
+    public class MyWebApplicationInitializer implements WebApplicationInitializer {
 
     /**
      * 传统的spring mvc 需要有一个web.xml 配置文件

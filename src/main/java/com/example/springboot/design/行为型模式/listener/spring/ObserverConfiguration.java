@@ -1,4 +1,4 @@
-package com.example.springboot.listener.spring;
+package com.example.springboot.design.行为型模式.listener.spring;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -17,9 +17,12 @@ public class ObserverConfiguration {
 
     @Bean
     public CommandLineRunner commandLineRunner(ApplicationContext context) {
-        return (args) -> {
-            System.out.println("发布事件，什么是观察者模式？");
-            context.publishEvent(new JavaStackEvent("什么是观察者模式？"));
+        return new CommandLineRunner() {
+            @Override
+            public void run(String... args) {
+                System.out.println("发布事件，什么是观察者模式？");
+                context.publishEvent(new JavaStackEvent("什么是观察者模式？"));
+            }
         };
     }
 

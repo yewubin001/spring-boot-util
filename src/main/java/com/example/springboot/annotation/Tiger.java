@@ -19,7 +19,7 @@ public class Tiger implements InitializingBean, DisposableBean {
     }
 
     @Override
-    public void destroy() throws Exception {
+    public void destroy() {
         System.out.println("destroy...");
     }
 

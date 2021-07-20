@@ -152,3 +152,7 @@ spring:
 ## Apollo 本地配置
 1. 把config-cache目录放到C:\opt\data\bumblebee目录下
 2. 设置环境变量ENV=Local， 或者在运行是加上-Denv=Local
+
+
+## 延时任务 https://juejin.cn/post/6844904150703013901#heading-0
+1、

@@ -22,7 +22,7 @@ public class AppConfig {
         System.out.println("初始化...");
     }
 
-    @Bean("fox")
+    @Bean(initMethod = "")
     public Fox getFox() {
         Fox fox = new Fox();
         fox.setName("jack");

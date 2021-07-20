@@ -1,4 +1,4 @@
-package com.example.springboot.listener.guava;
+package com.example.springboot.design.行为型模式.listener.guava;
 
 import com.google.common.eventbus.AsyncEventBus;
 import org.springframework.context.annotation.Bean;
