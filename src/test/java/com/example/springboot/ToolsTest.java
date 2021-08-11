@@ -141,6 +141,12 @@ public class ToolsTest {
         System.out.println(column); // 输出 {18:"yideng"}
 
 
+        // 将Map全部字段按照属性名字母顺序排序，用“=”连接属性名和属性值。
+        // 将排序后的字段使用“&”连接，形成一个字符k1=v1&k2=v2&kN=vN
+        ImmutableMap<String, String> map = ImmutableMap.of("partner", "zhongjin_test", "appId", "PLAT_ZJTS_004", "appSerno", "2021080915504225311129994202186228", "timestamp", "1628495442");
+        List<Map.Entry<String, String>> list = new ArrayList<>(map.entrySet());
+        Collections.sort(list, Comparator.comparing(Map.Entry::getKey));
+        System.out.println(Joiner.on("&").withKeyValueSeparator("=").join(list));
     }
 }
  class User {
