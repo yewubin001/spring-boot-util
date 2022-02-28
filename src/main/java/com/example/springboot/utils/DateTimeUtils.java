@@ -298,4 +298,14 @@ public class DateTimeUtils {
         return localDateTime.format(DateTimeFormatter.ofPattern(DATE_TIME_FORMAT));
     }
 
+    /**
+     * 格式化Instant
+     * @param instant
+     * @param pattern
+     * @return
+     */
+    public static String formatInstant(Instant instant,String pattern) {
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
+    }
 }
