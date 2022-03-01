@@ -62,14 +62,20 @@ public class ToolsTest {
         Date date2 = DateUtils.parseDate("2021-05-01 01:01:01", "yyyy-MM-dd HH:mm:ss");
         // 计算一个小时后的日期
         Date date3 = DateUtils.addHours(new Date(), 1);
-                /**
-         * Instant 转成字符串 yyyy-MM-dd 或者yyyy-MM-dd HH:mm:ss
-         */
+        
+        // Instant 转成字符串 yyyy-MM-dd 或者yyyy-MM-dd HH:mm:ss
+         
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.systemDefault());
         System.out.println(dateFormat.format(Instant.now()));
 
         LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
         System.out.println(localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+        
+        // 字符串 20220521 与当前时间比较大小
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        LocalDate parse = LocalDate.parse("20220521", formatter);
+        LocalDate now = LocalDate.now();
+        Assert.isTrue(parse.isAfter(now));
 
 
         System.out.println("----包装临时对象");
