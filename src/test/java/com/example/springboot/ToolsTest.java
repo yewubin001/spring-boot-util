@@ -71,7 +71,7 @@ public class ToolsTest {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault());
         System.out.println(localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         
-        // 字符串 20220521 与当前时间比较大小
+        // 字符串 按指定时间格式转成时间对象
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         LocalDate parse = LocalDate.parse("20220521", formatter);
         LocalDate now = LocalDate.now();
