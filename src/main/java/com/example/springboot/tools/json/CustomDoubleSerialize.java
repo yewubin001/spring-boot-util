@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
  * @author Shine
  */
 
-public class CustomDoubleSerialize extends JsonSerializer<Double> {
+public class CustomDoubleSerialize extends JsonSerializer<BigDecimal> {
 
     /**
      * 定义金额格式
@@ -26,7 +26,7 @@ public class CustomDoubleSerialize extends JsonSerializer<Double> {
     }
 
     @Override
-    public void serialize(Double value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
+    public void serialize(BigDecimal value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
         jgen.writeString(this.df.format(value));
     }
 }
