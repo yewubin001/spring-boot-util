@@ -16,17 +16,17 @@ public class CustomVO {
             using = CustomDoubleSerialize.class
     )
     @JsonProperty(value = "钱")
-    private Double money;
+    private BigDecimal money;
 
     @JsonSerialize(using = CustomDateSerialize.class)
     @JsonProperty(value = "日期")
     private Date date;
 
-    public Double getMoney() {
+    public BigDecimal getMoney() {
         return money;
     }
 
-    public void setMoney(Double money) {
+    public void setMoney(BigDecimal money) {
         this.money = money;
     }
 
