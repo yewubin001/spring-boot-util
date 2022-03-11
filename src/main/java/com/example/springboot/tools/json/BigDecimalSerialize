@@ -1,0 +1,29 @@
+package com.example.springboot.tools.json;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.util.Objects;
+
+/**
+ * json金额序列化输出
+ *
+ * @author yewubin
+ */
+public class BigDecimalSerialize extends JsonSerializer<BigDecimal> {
+
+    /**
+     * 定义金额格式
+     */
+    private DecimalFormat format = new DecimalFormat("##.000000");
+
+    @Override
+    public void serialize(BigDecimal amount, JsonGenerator generator, SerializerProvider provider) throws IOException {
+        // 元转万元
+        amount = Objects.nonNull(amount) ?  amount.divide(new BigDecimal("10000"), 2, BigDecimal.ROUND_HALF_UP) : BigDecimal.ZERO;
+        generator.writeString(format.format(amount));
+    }
+}
