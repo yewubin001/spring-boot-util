@@ -12,14 +12,14 @@ import java.util.Date;
  */
 public class CustomVO {
 
-    @JsonSerialize(
-            using = CustomDoubleSerialize.class
-    )
+    // @JsonSerialize(using = CustomDoubleSerialize.class)
     @JsonProperty(value = "钱")
+    @JsonSerialize(using = BigDecimalSerialize.class)
+    @JsonDeserialize(using = BigDecimalDeserialize.class)
     private BigDecimal money;
 
-    @JsonSerialize(using = CustomDateSerialize.class)
     @JsonProperty(value = "日期")
+    @JsonSerialize(using = CustomDateSerialize.class)
     private Date date;
 
     public BigDecimal getMoney() {
