@@ -27,7 +27,7 @@ public class EduEdmoPmsUserController {
     @GetMapping(value = "/customer")
     public CustomVO getCustom() {
         CustomVO customVO = new CustomVO();
-        customVO.setMoney(new Double(200));
+        customVO.setMoney(new BigDecimal(200));
         customVO.setDate(new Date());
         System.out.println(customVO);
         return customVO;
@@ -44,5 +44,13 @@ public class EduEdmoPmsUserController {
     }
 
 
-
+    /**
+     * @return
+     */
+    @PostMapping(value = "/save/customer")
+    public void saveCustom(@RequestBody CustomVO customVO) {
+        BigDecimal money = customVO.getMoney();
+        money.add(BigDecimal.ZERO);
+        System.out.println(customVO);
+    }
 }
