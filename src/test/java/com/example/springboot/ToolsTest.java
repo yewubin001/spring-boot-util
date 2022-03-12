@@ -1,7 +1,7 @@
 package com.example.springboot;
 
-import com.google.common.collect.*;
 import com.google.common.base.Joiner;
+import com.google.common.collect.*;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -10,9 +10,15 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.commons.lang3.tuple.Triple;
+import org.springframework.util.Assert;
 
 import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -150,10 +156,10 @@ public class ToolsTest {
 
         // 将Map全部字段按照属性名字母顺序排序，用“=”连接属性名和属性值。
         // 将排序后的字段使用“&”连接，形成一个字符k1=v1&k2=v2&kN=vN
-        ImmutableMap<String, String> map = ImmutableMap.of("partner", "zhongjin_test", "appId", "PLAT_ZJTS_004", "appSerno", "2021080915504225311129994202186228", "timestamp", "1628495442");
-        List<Map.Entry<String, String>> list = new ArrayList<>(map.entrySet());
-        Collections.sort(list, Comparator.comparing(Map.Entry::getKey));
-        System.out.println(Joiner.on("&").withKeyValueSeparator("=").join(list));
+        ImmutableMap<String, String> map2 = ImmutableMap.of("partner", "zhongjin_test", "appId", "PLAT_ZJTS_004", "appSerno", "2021080915504225311129994202186228", "timestamp", "1628495442");
+        List<Map.Entry<String, String>> list3 = new ArrayList<>(map.entrySet());
+        Collections.sort(list3, Comparator.comparing(Map.Entry::getKey));
+        System.out.println(Joiner.on("&").withKeyValueSeparator("=").join(list3));
     }
 }
  class User {

@@ -1,6 +1,7 @@
-package com.example.springboot.design.observer;
+package com.example.springboot.design.行为型模式.observer;
 
 import java.util.Vector;
+
 
 public class PingtougeAuthor implements Author {
     // 订阅者

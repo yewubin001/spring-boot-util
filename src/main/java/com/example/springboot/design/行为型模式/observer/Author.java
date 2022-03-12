@@ -1,4 +1,4 @@
-package com.example.springboot.design.observer;
+package com.example.springboot.design.行为型模式.observer;
 
 /**
  * 观察者模式的优点

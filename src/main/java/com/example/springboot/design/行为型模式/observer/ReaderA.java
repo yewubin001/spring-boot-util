@@ -1,6 +1,6 @@
-package com.example.springboot.design.observer;
+package com.example.springboot.design.行为型模式.observer;
 
-public class ReaderA implements Reader{
+public class ReaderA implements Reader {
 
     private String name;
 

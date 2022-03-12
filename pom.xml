@@ -76,6 +76,8 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <!-- 在使用zkClient操作Zookeeper时，基本的操作都封装在ZkClient类中，
+        使用时直接创建ZkClient对象，调用其相应的方法即可。 -->
         <dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
