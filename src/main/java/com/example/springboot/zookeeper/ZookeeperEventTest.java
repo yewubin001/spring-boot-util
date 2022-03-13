@@ -41,6 +41,9 @@ public class ZookeeperEventTest {
         executorService.submit(new ZookeeperConnector());
         executorService.submit(new ZookeeperConnector());
         try {
+            //坑点在于：
+            // Thread.currentThread().join()；
+            //线程一直在阻塞，无法终止。自己等待自己结束。
             Thread.currentThread().join();
         } catch (InterruptedException e) {
             e.printStackTrace();
