@@ -46,7 +46,7 @@ public class StringTester  {
         System.out.println(Splitter.on(',')
                 .trimResults()
                 .omitEmptyStrings()
-                .split("foo,bar,,   qux"));
+                .split("foo,bar,,   qux")); 
 
 
     }
