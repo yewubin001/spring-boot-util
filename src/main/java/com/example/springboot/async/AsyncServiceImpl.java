@@ -14,7 +14,7 @@ public class AsyncServiceImpl implements AsyncService {
     private static final Logger logger = LoggerFactory.getLogger(AsyncServiceImpl.class);
 
     @Override
-    @Async("asyncServiceExecutor")
+    @Async("taskExecutor")
     public void executeAsync() {
         logger.info("start executeAsync");
         try{
