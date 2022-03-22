@@ -40,4 +40,24 @@ public class AsyncController {
         logger.info("end submit");
         return fu.get();
     }
+    
+     @RequestMapping("/runnable")
+    public String submit(){
+        logger.info("start submit");
+        // 自定义任务 执行
+        ListenableFuture<?> listenableFuture = asyncServiceExecutor.submitListenable(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(10000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                logger.info("异步事务开始了。。。。");
+            }
+        });
+        System.out.println(listenableFuture.isDone());
+        logger.info("end submit");
+        return "success";
+    }
 }
