@@ -51,7 +51,7 @@ public class ExeController {
         map.put("now", DateFormat.getDateTimeInstance().format(new Date()));
         map.put("name", this.name);
         map.put("age", age);
-        map.put("bankBillUrl", applicationProperties.getFlow().getBankBillUrl());
+        map.put("bankBillUrl", applicationProperties.getBankBillUrl());
         return map;
     }
 

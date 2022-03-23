@@ -3,6 +3,7 @@ package com.example.springboot.configuration;
 import com.example.springboot.async.VisiableThreadPoolTaskExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
@@ -14,7 +15,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * @Auther: 59315
  * @Date: 2022/3/22
- * @Description: 自定义线程池
+ * @Description: 自定义线程池配置类
  */
 @Configuration
 @EnableAsync
@@ -22,17 +23,20 @@ public class ExecutorConfig implements AsyncConfigurer {
 
     private static final Logger logger = LoggerFactory.getLogger(ExecutorConfig.class);
 
+    @Autowired
+    private ApplicationProperties properties;
+
     @Bean("taskExecutor")
     public ThreadPoolTaskExecutor taskExecutor() {
         logger.info("start taskExecutor");
         //ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         VisiableThreadPoolTaskExecutor executor = new VisiableThreadPoolTaskExecutor();
         //配置核心线程数
-        executor.setCorePoolSize(5);
+        executor.setCorePoolSize(properties.getTaskThreadPool().getCorePoolSize());
         //配置最大线程数
-        executor.setMaxPoolSize(50);
+        executor.setMaxPoolSize(properties.getTaskThreadPool().getMaxPoolSize());
         //配置队列大小
-        executor.setQueueCapacity(10000);
+        executor.setQueueCapacity(properties.getTaskThreadPool().getKeepAliveSeconds());
         //配置线程池中的线程的名称前缀
         executor.setThreadNamePrefix("async-service-");
         // rejection-policy：当pool已经达到max size的时候，如何处理新任务
@@ -42,4 +46,6 @@ public class ExecutorConfig implements AsyncConfigurer {
         executor.initialize();
         return executor;
     }
+
+
 }

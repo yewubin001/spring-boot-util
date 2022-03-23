@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
  * @SpringBootApplication 已经实现了扫描该包下的所有注解，不需要再@ComponentScan扫描注解
  */
 @SpringBootApplication
+//@EnableConfigurationProperties(ApplicationProperties.class)
 public class SpringbootApplication {
 
     public static void main(String[] args) {

@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @Auther: yewub
  * @Date: 2018/12/3 14:17
- * @Description: 菜单转成树形结构 json
+ * @Description: 菜单递归转成树形结构 json
  */
 public class MenuService {
 

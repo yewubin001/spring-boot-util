@@ -1,13 +1,9 @@
-package com.example.springboot.redis;
+package com.example.springboot.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
@@ -21,8 +17,8 @@ import java.time.Duration;
  *
  * @author
  */
-@Configuration
-@EnableConfigurationProperties({RedisProperties.class})
+//@Configuration
+//@EnableConfigurationProperties({RedisProperties.class})
 public class JedisConfiguration {
     @Autowired
     private RedisProperties redisProperties;

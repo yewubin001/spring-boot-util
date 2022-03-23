@@ -14,21 +14,54 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "application")
 public class ApplicationProperties {
 
-    private final Credit flow = new Credit();
+    private String bankBillUrl;
 
-    public Credit getFlow() {
-        return flow;
+    private final TaskThreadPool taskThreadPool = new TaskThreadPool();
+
+    public String getBankBillUrl() {
+        return bankBillUrl;
     }
 
-    public static class Credit {
-        private String bankBillUrl;
+    public void setBankBillUrl(String bankBillUrl) {
+        this.bankBillUrl = bankBillUrl;
+    }
 
-        public String getBankBillUrl() {
-            return bankBillUrl;
+    public TaskThreadPool getTaskThreadPool() {
+        return taskThreadPool;
+    }
+
+    /**
+     *  线程池配置类
+     */
+    public static class TaskThreadPool {
+        private int corePoolSize;
+
+        private int maxPoolSize;
+
+        private int keepAliveSeconds;
+
+        public int getCorePoolSize() {
+            return corePoolSize;
         }
 
-        public void setBankBillUrl(String bankBillUrl) {
-            this.bankBillUrl = bankBillUrl;
+        public void setCorePoolSize(int corePoolSize) {
+            this.corePoolSize = corePoolSize;
+        }
+
+        public int getMaxPoolSize() {
+            return maxPoolSize;
+        }
+
+        public void setMaxPoolSize(int maxPoolSize) {
+            this.maxPoolSize = maxPoolSize;
+        }
+
+        public int getKeepAliveSeconds() {
+            return keepAliveSeconds;
+        }
+
+        public void setKeepAliveSeconds(int keepAliveSeconds) {
+            this.keepAliveSeconds = keepAliveSeconds;
         }
     }
 
