@@ -1,4 +1,4 @@
-package com.example.springboot.menu;
+package com.example.springboot.tools.menu;
 
 import javax.validation.constraints.Size;
 import java.io.Serializable;

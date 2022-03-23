@@ -1,4 +1,4 @@
-package com.example.springboot.menu;
+package com.example.springboot.tools.menu;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 import java.util.List;
 
 @Generated("com.robohorse.robopojogenerator")
-public class MenuResource {
+public class ChildItem{
 
 	@JsonProperty("symbol")
 	private String symbol;
@@ -16,9 +16,6 @@ public class MenuResource {
 
 	@JsonProperty("name")
 	private String name;
-
-	@JsonProperty("icon")
-	private String icon;
 
 	@JsonProperty("id")
 	private String id;
@@ -50,14 +47,6 @@ public class MenuResource {
 		return name;
 	}
 
-	public void setIcon(String icon){
-		this.icon = icon;
-	}
-
-	public String getIcon(){
-		return icon;
-	}
-
 	public void setId(String id){
 		this.id = id;
 	}
@@ -77,11 +66,10 @@ public class MenuResource {
 	@Override
  	public String toString(){
 		return 
-			"MenuResponse{" + 
+			"ChildItem{" + 
 			"symbol = '" + symbol + '\'' + 
 			",router = '" + router + '\'' + 
 			",name = '" + name + '\'' + 
-			",icon = '" + icon + '\'' + 
 			",id = '" + id + '\'' + 
 			",child = '" + child + '\'' + 
 			"}";

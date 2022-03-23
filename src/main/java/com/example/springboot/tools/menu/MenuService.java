@@ -1,4 +1,4 @@
-package com.example.springboot.menu;
+package com.example.springboot.tools.menu;
 
 import com.example.springboot.utils.JSONUtil;
 import org.springframework.util.StringUtils;
@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * @Auther: yewub
  * @Date: 2018/12/3 14:17
- * @Description: 菜单权限控制--转json
+ * @Description: 菜单转成树形结构 json
  */
 public class MenuService {
 
