@@ -1,6 +1,5 @@
-package com.example.springboot.spring.springmvc;
+package com.example.springboot.spring;
 
-import com.example.springboot.configuration.AppConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;

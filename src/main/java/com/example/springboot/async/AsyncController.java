@@ -3,10 +3,12 @@ package com.example.springboot.async;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
@@ -22,7 +24,9 @@ public class AsyncController {
     private static final Logger logger = LoggerFactory.getLogger(AsyncController.class);
     @Autowired
     private AsyncService asyncService;
-    
+    @Autowired
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+
     @GetMapping("/async")
     public String async() {
         logger.info("start submit");
@@ -40,24 +44,25 @@ public class AsyncController {
         logger.info("end submit");
         return fu.get();
     }
-    
+
      @RequestMapping("/runnable")
-    public String submit(){
+    public String submit() throws ExecutionException, InterruptedException {
         logger.info("start submit");
         // 自定义任务 执行
-        ListenableFuture<?> listenableFuture = asyncServiceExecutor.submitListenable(new Runnable() {
+        Future<?> future = threadPoolTaskExecutor.submit(new Callable<Object>() {
             @Override
-            public void run() {
+            public String call() {
                 try {
                     Thread.sleep(10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 logger.info("异步事务开始了。。。。");
+                return "success";
             }
         });
-        System.out.println(listenableFuture.isDone());
-        logger.info("end submit");
-        return "success";
+         Object o = future.get();
+         logger.info("end submit");
+        return o+"";
     }
 }

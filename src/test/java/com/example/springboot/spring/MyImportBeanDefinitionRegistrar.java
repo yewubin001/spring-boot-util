@@ -1,4 +1,4 @@
-package com.example.springboot.configuration;
+package com.example.springboot.spring;
 
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
 import org.springframework.beans.factory.support.RootBeanDefinition;

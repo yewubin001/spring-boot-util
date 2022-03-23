@@ -1,4 +1,4 @@
-package com.example.springboot.configuration;
+package com.example.springboot.spring;
 
 /**
  * @Auther: 59315

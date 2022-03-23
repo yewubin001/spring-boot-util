@@ -1,4 +1,4 @@
-package com.example.springboot.configuration;
+package com.example.springboot.spring;
 
 import org.junit.Test;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;

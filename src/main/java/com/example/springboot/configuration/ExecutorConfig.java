@@ -1,5 +1,6 @@
 package com.example.springboot.configuration;
 
+import com.example.springboot.async.VisiableThreadPoolTaskExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -8,13 +9,12 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @Auther: 59315
  * @Date: 2022/3/22
- * @Description: 
+ * @Description: 自定义线程池
  */
 @Configuration
 @EnableAsync
@@ -24,7 +24,7 @@ public class ExecutorConfig implements AsyncConfigurer {
 
     @Bean("taskExecutor")
     public ThreadPoolTaskExecutor taskExecutor() {
-        logger.info("start asyncServiceExecutor");
+        logger.info("start taskExecutor");
         //ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         VisiableThreadPoolTaskExecutor executor = new VisiableThreadPoolTaskExecutor();
         //配置核心线程数
