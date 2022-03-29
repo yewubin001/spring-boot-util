@@ -1,22 +1,23 @@
 package com.example.springboot.async;
 
+import com.example.springboot.configuration.ExceptionHandlingAsyncTaskExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executor;
 import java.util.concurrent.Future;
 
 /**
  * @Auther: 59315
  * @Date: 2019/6/13 22:08
- * @Description: @Async 一般不会有返回值，如果需要返回值就返回Future，就变成同步的了。
- *
+ * @Description: @Async 一般不会有返回值，如果需要返回值就返回Future，
+ * 就变成同步的了。
  */
 @RestController
 @RequestMapping("/api")
@@ -25,7 +26,7 @@ public class AsyncController {
     @Autowired
     private AsyncService asyncService;
     @Autowired
-    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
+    private Executor taskExecutor;
 
     @GetMapping("/async")
     public String async() {
@@ -42,14 +43,15 @@ public class AsyncController {
         //调用service层的任务
         Future<String> fu = asyncService.executeAsyncReturn();
         logger.info("end submit");
-        return fu.get();
+        return null;
     }
 
-     @RequestMapping("/runnable")
+    @RequestMapping("/runnable")
     public String submit() throws ExecutionException, InterruptedException {
         logger.info("start submit");
         // 自定义任务 执行
-        Future<?> future = threadPoolTaskExecutor.submit(new Callable<Object>() {
+        ExceptionHandlingAsyncTaskExecutor t = (ExceptionHandlingAsyncTaskExecutor) taskExecutor;
+        Future<?> future = t.submit(new Callable<Object>() {
             @Override
             public String call() {
                 try {
@@ -61,8 +63,9 @@ public class AsyncController {
                 return "success";
             }
         });
-         Object o = future.get();
-         logger.info("end submit");
+        // get方法会阻塞
+        Object o = future.get();
+        logger.info("end submit");
         return o+"";
     }
 }

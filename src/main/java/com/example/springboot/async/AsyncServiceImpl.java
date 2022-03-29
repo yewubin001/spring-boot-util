@@ -14,7 +14,7 @@ public class AsyncServiceImpl implements AsyncService {
     private static final Logger logger = LoggerFactory.getLogger(AsyncServiceImpl.class);
 
     @Override
-    @Async("taskExecutor")
+    @Async
     public void executeAsync() {
         logger.info("start executeAsync");
         try{
@@ -26,15 +26,15 @@ public class AsyncServiceImpl implements AsyncService {
     }
 
     @Override
-    @Async("taskExecutor")
+    @Async
     public Future<String> executeAsyncReturn() {
-        logger.info("start executeAsync");
+        logger.info("start executeAsyncReturn");
         try{
             Thread.sleep(5000);
         }catch(Exception e){
             e.printStackTrace();
         }
-        logger.info("end executeAsync");
+        logger.info("end executeAsyncReturn");
         return new AsyncResult<>("success");
     }
 }
