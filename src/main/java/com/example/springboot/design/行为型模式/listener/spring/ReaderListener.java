@@ -1,7 +1,7 @@
 package com.example.springboot.design.行为型模式.listener.spring;
 
 import lombok.NonNull;
-import org.springframework.context.ApplicationListener;
+import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.Async;
 
 /**
@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Async;
  * 实现ApplicationListener 接口即可， ApplicationListener 中的泛型指定为对应的事件
  * 切记要把该监听器注入到Spring中哦 !!!
  */
-public class ReaderListener implements ApplicationListener<JavaStackEvent> {
+public class ReaderListener {
 
     @NonNull
     private String name;
@@ -25,7 +25,7 @@ public class ReaderListener implements ApplicationListener<JavaStackEvent> {
      * @param event the event to respond to
      */
     @Async
-    @Override
+    @EventListener
     public void onApplicationEvent(JavaStackEvent event) {
         // 更新文章
         updateArticle(event);
