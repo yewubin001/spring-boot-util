@@ -8,10 +8,10 @@ package com.example.springboot.tools.debug;
 public class BreakPointDemo {
     public static void main(String[] args) {
 //        line();
-//        detailLine();
+       detailLine();
 //        method();
 //        exception();
-        field();
+//         field();
     }
 
     // 1. 行断点

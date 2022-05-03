@@ -14,8 +14,7 @@ public class ThreadTest {
     /**
      * 第一种：继承Thread类  主线程必须等待线程t执行完之后再执行
      */
-    @Test
-    public void thread1() throws InterruptedException {
+    public  static void main(String [] args) throws InterruptedException {
         Thread thread = new Thread() {
             @Override
             public void run() {

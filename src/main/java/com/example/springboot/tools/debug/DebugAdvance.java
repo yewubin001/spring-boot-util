@@ -1,6 +1,8 @@
 package com.example.springboot.tools.debug;
 
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -8,11 +10,12 @@ import java.util.stream.Collectors;
 /**
  * 断点调试：进阶
  */
-
+@Slf4j
 public class DebugAdvance {
     // 1. 条件表达式
     public static void conditions() {
         for (int i = 0; i < 10; i++) {
+            // 此处断点 右击 condition i==5
             System.out.println(i);
         }
         
@@ -46,6 +49,7 @@ public class DebugAdvance {
         System.out.println("save to db");
         System.out.println("save to redis");
         System.out.println("send message to mq for money payout");
+        String s = new String();
     }
 
     // 5. 快捷键、图标含义
@@ -64,11 +68,11 @@ public class DebugAdvance {
     }
 
     public static void main(String[] args) {
-//        conditions();
-//        printStackTrace();
+        // conditions();
+        // printStackTrace();
 //        evaluate();
 //        saveResource();
-//        keysExplain();
-        streamDebug();
+        keysExplain();
+//         streamDebug();
     }
 }
