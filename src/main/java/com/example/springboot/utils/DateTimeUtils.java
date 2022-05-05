@@ -33,7 +33,11 @@ public class DateTimeUtils {
     }
 
     /**
-     * 按照指定格式生成时间字符串
+     * 按照指定格式 Date -> String
+     *
+     * @param date
+     * @param pattern
+     * @return
      */
     public static String formatDateTime(Date date, String pattern) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
@@ -41,24 +45,43 @@ public class DateTimeUtils {
     }
 
     /**
-     * 按照指定格式指定时间
+     * 按照指定格式 时间字符串 -> LocalDateTime
+     *
+     * @param dateTime
+     * @param pattern
+     * @return
      */
     public static LocalDateTime parseDateTime(String dateTime, String pattern) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
         return LocalDateTime.parse(dateTime, formatter);
     }
 
+    /**
+     * Date -> LocalDateTime
+     *
+     * @param date
+     * @return
+     */
     public static LocalDateTime toLocalDateTime(Date date) {
         return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }
 
+
+    /**
+     * LocalDateTime -> Date
+     *
+     * @param localDateTime
+     * @return
+     */
     public static Date fromLocalDateTime(LocalDateTime localDateTime) {
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 
-
     /**
-     * 按照指定格式指定时间
+     *  yyyy-MM-dd字符串格式转成Date
+     *
+     * @param dateStr
+     * @return
      */
     public static Date parseDate(String dateStr) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
@@ -67,7 +90,10 @@ public class DateTimeUtils {
     }
 
     /**
-     * Calls {@link #asLocalDate(Date, ZoneId)} with the system default time zone.
+     * Date -> LocalDate
+     *
+     * @param date
+     * @return
      */
     public static LocalDate asLocalDate(java.util.Date date) {
         return asLocalDate(date, ZoneId.systemDefault());
@@ -89,7 +115,10 @@ public class DateTimeUtils {
     }
 
     /**
-     * Calls {@link #asLocalDateTime(Date, ZoneId)} with the system default time zone.
+     * Date -> LocalDateTime
+     *
+     * @param date
+     * @return
      */
     public static LocalDateTime asLocalDateTime(java.util.Date date) {
         return asLocalDateTime(date, ZoneId.systemDefault());
@@ -111,7 +140,10 @@ public class DateTimeUtils {
     }
 
     /**
-     * Calls {@link #asUtilDate(Object, ZoneId)} with the system default time zone.
+     * 任意时间类型的对象 -> java.util.Date
+     *
+     * @param date
+     * @return
      */
     public static java.util.Date asUtilDate(Object date) {
         return asUtilDate(date, ZoneId.systemDefault());
@@ -158,31 +190,39 @@ public class DateTimeUtils {
     }
 
     /**
-     * Creates an {@link Instant} from {@code java.util.Date} or it's subclasses. Null-safe.
-     */
-    public static Instant asInstant(Date date) {
-        if (date == null) {
-            return null;
-        } else {
-            return Instant.ofEpochMilli(date.getTime());
-        }
-    }
-
-    /**
-     * Calls {@link #asZonedDateTime(Date, ZoneId)} with the system default time zone.
+     * Date -> ZonedDateTime
+     *
+     * @param date
+     * @return
      */
     public static ZonedDateTime asZonedDateTime(Date date) {
         return asZonedDateTime(date, ZoneId.systemDefault());
     }
-
     /**
-     * Creates {@link ZonedDateTime} from {@code java.util.Date} or it's subclasses. Null-safe.
+     * Date -> ZonedDateTime
+     *
+     * @param date
+     * @param zone
+     * @return
      */
     public static ZonedDateTime asZonedDateTime(Date date, ZoneId zone) {
         if (date == null) {
             return null;
         } else {
             return asInstant(date).atZone(zone);
+        }
+    }
+    /**
+     * Date -> Instant
+     *
+     * @param date
+     * @return
+     */
+    public static Instant asInstant(Date date) {
+        if (date == null) {
+            return null;
+        } else {
+            return Instant.ofEpochMilli(date.getTime());
         }
     }
 
@@ -287,19 +327,19 @@ public class DateTimeUtils {
     }
 
     /**
-     * @return java.lang.String
-     * @Author gg.rao
-     * @Description 格式化Instant
-     * @Date 2018/11/6 16:57
-     * @Param [instant]
-     **/
+     * Instant -> String
+     *
+     * @param instant
+     * @return
+     */
     public static String formatInstant(Instant instant) {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         return localDateTime.format(DateTimeFormatter.ofPattern(DATE_TIME_FORMAT));
     }
 
     /**
-     * 格式化Instant
+     * Instant -> 指定格式的String
+     *
      * @param instant
      * @param pattern
      * @return
@@ -307,5 +347,15 @@ public class DateTimeUtils {
     public static String formatInstant(Instant instant,String pattern) {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
+    }
+
+    /**
+     * Instant -> LocalDate
+     *
+     * @param instant
+     * @return
+     */
+    public static LocalDate instantToLocalDate(Instant instant) {
+        return instant.atZone(ZoneId.systemDefault()).toLocalDate();
     }
 }
