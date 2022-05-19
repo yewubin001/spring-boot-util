@@ -323,6 +323,25 @@
             <artifactId>jol-core</artifactId>
             <version>0.9</version>
         </dependency>
+
+        <!-- 这里需要注意的是，在springboot的web环境中来使用的话，spring-boot-starter-cache是必须的。-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <version>5.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-spring</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>

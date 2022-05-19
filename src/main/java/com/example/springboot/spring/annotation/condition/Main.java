@@ -1,4 +1,4 @@
-package com.example.springboot.books.condition;
+package com.example.springboot.spring.annotation.condition;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

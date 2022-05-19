@@ -1,6 +1,4 @@
-package com.example.springboot.books.condition;
-
-import javax.validation.constraints.Max;
+package com.example.springboot.spring.annotation.condition;
 
 /**
  * @Auther: yewub

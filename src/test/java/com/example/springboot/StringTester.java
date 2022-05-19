@@ -3,8 +3,11 @@ package com.example.springboot;
 import com.google.common.base.Joiner;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Maps;
+import org.hibernate.validator.internal.util.privilegedactions.GetResource;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -49,5 +52,15 @@ public class StringTester  {
                 .split("foo,bar,,   qux")); 
 
 
+    }
+
+    @Test
+    public void test() throws IOException {
+        String fileNameOk = "CJR330304198612157514.ok";
+        String fileDir = GetResource.class.getClassLoader().getResource("templates/").getPath() + "CLA202205060000054046";
+        String okFilePath = fileDir.concat(File.separator).concat(fileNameOk);
+        File file = new File(okFilePath);
+        file.createNewFile();
+        System.out.println(file.getAbsolutePath());
     }
 }
