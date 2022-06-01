@@ -3,12 +3,12 @@ package com.example.springboot.tools.controller;
 
 import com.example.springboot.tools.json.CustomVO;
 import com.example.springboot.utils.ExcelUtil;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -22,13 +22,16 @@ import java.util.List;
  * @since 2018-08-08 16:14:25
  */
 @RestController
+@Api("用户信息")
 public class EduEdmoPmsUserController {
 
     /**
      * @return
      */
+    @ApiOperation("查询客户信息")
+    @ApiImplicitParam(name = "name", value = "名字", dataType = "String")
     @GetMapping(value = "/customer")
-    public CustomVO getCustom() {
+    public CustomVO getCustom(@RequestParam("name") String name) {
         CustomVO customVO = new CustomVO();
         customVO.setMoney(new BigDecimal(200));
         customVO.setDate(new Date());
@@ -38,18 +41,19 @@ public class EduEdmoPmsUserController {
 
     /**
      * excel导出
+     *
      * @return
      */
     @GetMapping("/excel-export")
-    public ResponseEntity<FileSystemResource> exportExcel(){
+    public ResponseEntity<FileSystemResource> exportExcel() {
         List<ExcelDataDTO> excelData = new ArrayList<>();
         return ExcelUtil.excelExport(excelData, ExcelDataDTO.class, "文件下载", "第一页");
     }
 
-
     /**
      * @return
      */
+    @ApiOperation("保存客户信息")
     @PostMapping(value = "/save/customer")
     public void saveCustom(@RequestBody CustomVO customVO) {
         BigDecimal money = customVO.getMoney();

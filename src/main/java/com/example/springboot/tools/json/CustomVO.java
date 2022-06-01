@@ -1,8 +1,9 @@
 package com.example.springboot.tools.json;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,16 +13,16 @@ import java.util.Date;
  * @Date: 2019/1/12 22:34
  * @Description:
  */
+@ApiModel(description = "客户信息")
 public class CustomVO {
 
-    // @JsonSerialize(using = CustomDoubleSerialize.class)
-    @JsonProperty(value = "钱")
     @JsonSerialize(using = BigDecimalSerialize.class)
     @JsonDeserialize(using = BigDecimalDeserialize.class)
+    @ApiModelProperty(value = "金额")
     private BigDecimal money;
 
-    @JsonProperty(value = "日期")
     @JsonSerialize(using = CustomDateSerialize.class)
+    @ApiModelProperty(value = "日期")
     private Date date;
 
     public BigDecimal getMoney() {

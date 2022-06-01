@@ -8,7 +8,10 @@ import org.junit.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -62,5 +65,19 @@ public class StringTester  {
         File file = new File(okFilePath);
         file.createNewFile();
         System.out.println(file.getAbsolutePath());
+    }
+
+    public static final Pattern PATTERN = Pattern.compile("^(([1-9]{1}\\d*)|([0]{1}))(\\.(\\d){1,2})?$");
+
+    /**
+     * 正则表达式
+     */
+    @Test
+    public void test2(){
+        BigDecimal amount = new BigDecimal("900000");
+        Matcher matcher = PATTERN.matcher(String.valueOf(amount));
+        if (amount.compareTo(BigDecimal.ZERO) <= 0 || !matcher.matches()) {
+            System.out.println("true");
+        }
     }
 }
