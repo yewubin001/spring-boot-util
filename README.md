@@ -155,4 +155,16 @@ spring:
 
 
 ## 延时任务 https://juejin.cn/post/6844904150703013901#heading-0
-1、
+
+## Swagger3 使用 需要加入依赖
+<dependency>
+    <groupId>io.springfox</groupId>
+    <artifactId>springfox-boot-starter</artifactId>
+    <version>3.0.0</version>
+</dependency>
+
+访问链接：http://localhost:8080/springboot/swagger-ui/#/
+找到 http://localhost:8080/springboot/v3/api-docs
+导入Apifox：项目设置-> 数据管理->导入数据，URL导入 http://localhost:8080/springboot/v3/api-docs
+在线分享：将接口文档以URL形式分享出去，方便外部团队在线查看
+ 

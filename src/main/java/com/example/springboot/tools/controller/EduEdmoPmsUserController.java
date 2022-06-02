@@ -22,7 +22,7 @@ import java.util.List;
  * @since 2018-08-08 16:14:25
  */
 @RestController
-@Api("用户信息")
+@Api(tags = "用户信息")
 public class EduEdmoPmsUserController {
 
     /**
