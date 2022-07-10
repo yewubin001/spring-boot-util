@@ -78,7 +78,7 @@ public class DateTimeUtils {
     }
 
     /**
-     *  yyyy-MM-dd字符串格式转成Date
+     * yyyy-MM-dd字符串格式转成Date
      *
      * @param dateStr
      * @return
@@ -198,6 +198,7 @@ public class DateTimeUtils {
     public static ZonedDateTime asZonedDateTime(Date date) {
         return asZonedDateTime(date, ZoneId.systemDefault());
     }
+
     /**
      * Date -> ZonedDateTime
      *
@@ -212,6 +213,7 @@ public class DateTimeUtils {
             return asInstant(date).atZone(zone);
         }
     }
+
     /**
      * Date -> Instant
      *
@@ -344,7 +346,7 @@ public class DateTimeUtils {
      * @param pattern
      * @return
      */
-    public static String formatInstant(Instant instant,String pattern) {
+    public static String formatInstant(Instant instant, String pattern) {
         LocalDateTime localDateTime = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
         return localDateTime.format(DateTimeFormatter.ofPattern(pattern));
     }
@@ -357,5 +359,18 @@ public class DateTimeUtils {
      */
     public static LocalDate instantToLocalDate(Instant instant) {
         return instant.atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    /**
+     * 字符串时间 -> Instant
+     *
+     * @param date
+     * @param pattern
+     * @return
+     */
+    public static Instant stringToInstant(String date, String pattern){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(pattern);
+        LocalDate localDate = LocalDate.parse(date, formatter);
+        return localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
     }
 }
