@@ -6,6 +6,11 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 /**
  * @Auther: yewub
  * @Date: 2019/2/14 13:35
@@ -42,6 +47,14 @@ public class AppTest {
 
 
         System.out.println(context.getBean("user"));
+    }
+
+    public static void main(String[] args) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate localDate = LocalDate.parse("2022-07-05", formatter);
+        Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
+        System.out.println(instant);
     }
 
 }
