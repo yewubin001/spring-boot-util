@@ -121,12 +121,6 @@
         </dependency>
         <!-- jackson end -->
 
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-        </dependency>
-
         <!-- guava依赖 -->
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -235,7 +229,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>5.0.9.RELEASE</version>
             <scope>compile</scope>
         </dependency>
 

@@ -6,10 +6,8 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
+import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 /**
  * @Auther: yewub
@@ -50,11 +48,12 @@ public class AppTest {
     }
 
     public static void main(String[] args) {
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate localDate = LocalDate.parse("2022-07-05", formatter);
-        Instant instant = localDate.atStartOfDay(ZoneId.systemDefault()).toInstant();
-        System.out.println(instant);
+        NumberFormat percentInstance = NumberFormat.getPercentInstance();
+        //最大整数位数
+        percentInstance.setMaximumIntegerDigits(3);
+        //最小小数位数
+        percentInstance.setMinimumFractionDigits(4);
+        System.out.println(percentInstance.format(new BigDecimal("0.1212")));
     }
 
 }
