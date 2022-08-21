@@ -167,4 +167,10 @@ spring:
 找到 http://localhost:8080/springboot/v3/api-docs
 导入Apifox：项目设置-> 数据管理->导入数据，URL导入 http://localhost:8080/springboot/v3/api-docs
 在线分享：将接口文档以URL形式分享出去，方便外部团队在线查看
- 
+
+#github 无法ping通网络，导致push代码 报 443 
+进入 C:\Windows\System32\drivers\etc 找到hosts 打开在文件最后面增加：
+143.198.107.177 github.com （其中ip地址为下面的url页面中的ip地址）
+https://ipaddress.com/website/github.global.ssl.fastly.net
+
+
